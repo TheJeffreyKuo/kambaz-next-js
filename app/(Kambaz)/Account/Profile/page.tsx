@@ -14,6 +14,6 @@ export default function Profile() {
         <option value="USER">User</option>       <option value="ADMIN">Admin</option>
         <option value="FACULTY">Faculty</option> <option value="STUDENT">Student</option>
       </select><br/>
-      <Link href="signin" > Sign out </Link>
+      <Link href="Signin" > Sign out </Link>
     </div>
 );}
