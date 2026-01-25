@@ -6,9 +6,9 @@ export default async function CoursesLayout({
   params,
 }: {
   children: ReactNode;
-  params: Promise<{ cid: string }>;
+  params: { cid: string };
 }) {
-  const { cid } = await params;
+  const { cid } = params;
  return (
    <div id="wd-courses">
      <h2>Courses {cid}</h2>
