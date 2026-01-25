@@ -5,7 +5,7 @@ export default async function CoursesLayout(
  const { cid } = await params;
  return (
    <div id="wd-courses">
-     <h2>Courses {cid}</h2>
+     <h2>Course {cid}</h2>
      <hr />
      <table>
        <tbody>
