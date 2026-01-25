@@ -249,6 +249,9 @@ export default function Lab1() {
         Please 
         <a href="https://github.com/TheJeffreyKuo/kambaz-next-js" id="wd-github">click here</a>
         to go to my Github repository<br/>
+        <h4>Full Name</h4>
+        Chia Hao Kuo
+        <br/>
     </div>
   );
 }
