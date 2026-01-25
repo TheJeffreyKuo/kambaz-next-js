@@ -47,7 +47,11 @@ export default function Lab1() {
 
         My favorite recipe:
         <ol id="wd-your-favorite-recipe">
-          {/* complete on your own */}
+          <li>Season the steak.</li>
+          <li>Heat a pan until hot.</li>
+          <li>Cook the steak on both sides.</li>
+          <li>Let it rest for a few minutes.</li>
+          <li>Slice and serve.</li>
         </ol>
 
         <h5>Unordered List Tag</h5>
@@ -62,7 +66,11 @@ export default function Lab1() {
 
         Your favorite books (in no particular order)
         <ul id="wd-your-books">
-          {/* complete on your own */}
+          <li>Game Changer (Game Changers #1)</li>
+          <li>
+            1929: Inside the Greatest Crash in Wall Street History--and How It Shattered a Nation
+          </li>
+          <li>I'm Glad My Mom Died</li>
         </ul>
       </div>
 
