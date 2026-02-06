@@ -9,4 +9,13 @@ export default function Lab2() {
         right on the element. Although it's very convenient
         it is considered bad practice and you should avoid
         using the style attribute</p>
-    </div> );}
+        <h3>ID selectors</h3>
+        <p id="wd-id-selector-1">
+          Instead of changing the look and feel of all the 
+          elements of the same name, e.g., P, we can refer to a specific element by its ID
+        </p>
+        <p id="wd-id-selector-2">
+          Here's another paragraph using a different ID and a different look and feel
+        </p>
+      </div>
+  );}
