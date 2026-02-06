@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 import TOC from "./TOC";
+import { Geist, Geist_Mono } from "next/font/google";
+// import "./globals.css";
 
 export default function LabsLayout({
  children,
