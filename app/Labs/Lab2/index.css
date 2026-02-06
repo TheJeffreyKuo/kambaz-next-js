@@ -158,3 +158,6 @@ p#wd-id-selector-2 {
 .wd-flex-grow-1 {
   flex-grow: 1;
 }
+.wd-width-75px {
+  width: 75px;
+}
