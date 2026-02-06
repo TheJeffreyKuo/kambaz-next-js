@@ -155,3 +155,6 @@ p#wd-id-selector-2 {
   display: flex;
   flex-direction: row;
 }
+.wd-flex-grow-1 {
+  flex-grow: 1;
+}
