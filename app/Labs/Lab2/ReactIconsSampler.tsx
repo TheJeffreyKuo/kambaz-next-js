@@ -15,4 +15,5 @@ export default function ReactIconsSampler() {
         <FaRegClock className="fs-3 text" />
       </div>
     </div>
-);}
+  );
+}
