@@ -151,3 +151,7 @@ p#wd-id-selector-2 {
    width: 20%;
    float: left;
 }
+.wd-flex-row-container {
+  display: flex;
+  flex-direction: row;
+}
