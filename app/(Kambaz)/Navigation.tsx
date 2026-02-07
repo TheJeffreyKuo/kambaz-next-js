@@ -1,58 +1,93 @@
+"use client";
+
 import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 export default function KambazNavigation() {
+ const pathname = usePathname();
+ const links = [
+  {
+   label: "Account",
+   href: "/Account/Signin",
+   id: "wd-account-link",
+   Icon: FaRegCircleUser,
+   iconClass: "text-white",
+  },
+  {
+   label: "Dashboard",
+   href: "/Dashboard",
+   id: "wd-dashboard-link",
+   Icon: AiOutlineDashboard,
+   iconClass: "text-danger",
+  },
+  {
+   label: "Courses",
+   href: "/Courses",
+   id: "wd-courses-link",
+   Icon: LiaBookSolid,
+   iconClass: "text-danger",
+  },
+  {
+   label: "Calendar",
+   href: "/Calendar",
+   id: "wd-calendar-link",
+   Icon: IoCalendarOutline,
+   iconClass: "text-danger",
+  },
+  {
+   label: "Inbox",
+   href: "/Inbox",
+   id: "wd-inbox-link",
+   Icon: FaInbox,
+   iconClass: "text-danger",
+  },
+  {
+   label: "Labs",
+   href: "/Labs",
+   id: "wd-labs-link",
+   Icon: LiaCogSolid,
+   iconClass: "text-danger",
+  },
+ ];
+
+ const isActive = (link: (typeof links)[number]) =>
+  pathname === link.href || pathname.startsWith(link.href + "/");
  return (
-   <ListGroup className="rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2" style={{ width: 120 }}
-              id="wd-kambaz-navigation">
-     <ListGroupItem className="bg-black border-0 text-center" as="a"
-              target="_blank" href="https://www.northeastern.edu/" id="wd-neu-link">
-       <img src="/images/NEU.png" width="75px" alt="Northeastern University" />
-     </ListGroupItem><br />
-     <ListGroupItem className="border-0 bg-black text-center">
-       <Link href="/Account" id="wd-account-link" className="text-white text-decoration-none">
-         <FaRegCircleUser className="fs-1 text-white" />
-         <br />
-         Account
-       </Link>
-     </ListGroupItem><br />
-     <ListGroupItem className="border-0 bg-white text-center">
-       <Link href="/Dashboard" id="wd-dashboard-link" className="text-danger text-decoration-none">
-         <AiOutlineDashboard className="fs-1 text-danger" />
-         <br />
-         Dashboard
-       </Link>
-     </ListGroupItem><br />
-     <ListGroupItem className="border-0 bg-black text-center">
-      <Link href="/Dashboard" id="wd-courses-link" className="text-white text-decoration-none">
-        <LiaBookSolid className="fs-1 text-danger" />
-        <br />
-        Courses
-      </Link>
+  <ListGroup
+      id="wd-kambaz-navigation"
+      style={{ width: 110 }}
+      className="rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2">
+    <ListGroupItem className="bg-black border-0 text-center" as="a"
+    target="_blank" href="https://www.northeastern.edu/" id="wd-neu-link">
+    <img src="/images/NEU.png" width="75px" alt="Northeastern University" />
     </ListGroupItem>
-    <ListGroupItem className="border-0 bg-black text-center">
-      <Link href="/Calendar" id="wd-calendar-link" className="text-white text-decoration-none">
-        <IoCalendarOutline className="fs-1 text-danger" />
-        <br />
-        Calendar
+
+   {links.map((link) => {
+    const active = isActive(link);
+
+    return (
+     <ListGroupItem
+      key={link.id}
+      className={`border-0 bg-black text-center ${
+       active ? "bg-white" : "bg-black"
+      }`}>
+      <Link
+       href={link.href}
+       id={link.id}
+       className={`text-decoration-none d-block ${
+        active ? "text-danger" : "text-white"
+       }`}>
+       <link.Icon className={`fs-1 ${link.iconClass}`} />
+       {link.label}
       </Link>
-    </ListGroupItem>
-    <ListGroupItem className="border-0 bg-black text-center">
-      <Link href="/Inbox" id="wd-inbox-link" className="text-white text-decoration-none">
-        <FaInbox className="fs-1 text-danger" />
-        <br />
-        Inbox
-      </Link>
-    </ListGroupItem>
-    <ListGroupItem className="border-0 bg-black text-center">
-      <Link href="/Labs" id="wd-labs-link" className="text-white text-decoration-none">
-        <LiaCogSolid className="fs-1 text-danger" />
-        <br />
-        Labs
-      </Link>
-    </ListGroupItem>
-   </ListGroup>
-);}
+     </ListGroupItem>
+    );
+   })}
+  </ListGroup>
+ );
+}
