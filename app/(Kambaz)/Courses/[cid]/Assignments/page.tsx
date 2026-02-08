@@ -117,7 +117,7 @@ export default async function Assignments({
                 className="wd-assignment-link text-decoration-none text-dark flex-grow-1"
                 style={{ minWidth: 0 }}
             >
-                <div className="wd-assignment-title fw-bold">A3 JAVASCRIPT + REACTL</div>
+                <div className="wd-assignment-title fw-bold">A3 JAVASCRIPT + REACT</div>
                 <div className="wd-assignment-subtext text-secondary small">
                 <span className="text-danger">Multiple Modules</span> | <b> Not available until </b> May 20 at 12:00am |
                 </div>
