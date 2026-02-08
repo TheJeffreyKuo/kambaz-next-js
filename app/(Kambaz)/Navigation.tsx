@@ -16,7 +16,7 @@ export default function KambazNavigation() {
    href: "/Account/Signin",
    id: "wd-account-link",
    Icon: FaRegCircleUser,
-   iconClass: "text-danger",
+   iconClass: "text-white",
   },
   {
    label: "Dashboard",
@@ -83,6 +83,7 @@ export default function KambazNavigation() {
         active ? "text-danger" : "text-white"
        }`}>
        <link.Icon className={`fs-1 ${link.iconClass}`} />
+       <br />
        {link.label}
       </Link>
      </ListGroupItem>
