@@ -16,7 +16,7 @@ export default function KambazNavigation() {
    href: "/Account/Signin",
    id: "wd-account-link",
    Icon: FaRegCircleUser,
-   iconClass: "text-white",
+   iconClass: "text-danger",
   },
   {
    label: "Dashboard",
