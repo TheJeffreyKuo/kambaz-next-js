@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Button, ListGroup, ListGroupItem } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa6";
-import { IoSearch } from "react-icons/io5";
-import { BsGripVertical, BsPlus, BsThreeDotsVertical } from "react-icons/bs";
+import { IoEllipsisVertical, IoSearch } from "react-icons/io5";
+import { BsGripVertical, BsPlus } from "react-icons/bs";
 
 export default async function Assignments({
   params,
@@ -62,7 +62,7 @@ export default async function Assignments({
         <ListGroup id="wd-assignment-list" className="rounded-0">
             <ListGroupItem className="wd-assignment-item border-gray p-3 ps-3 d-flex justify-content-between align-items-start">
             <div className="me-1 flex-shrink-0 align-self-stretch d-flex align-items-center text-secondary">
-                <BsGripVertical />
+                <BsGripVertical className="me-2 fs-3" />
             </div>
             <Link
                 href={`/Courses/${cid}/Assignments/123`}
@@ -80,13 +80,13 @@ export default async function Assignments({
 
             <div className="ms-3 flex-shrink-0 align-self-stretch d-flex align-items-center">
             <button type="button" className="btn p-0 border-0 bg-transparent text-secondary">
-                <BsThreeDotsVertical className="fs-5" />
+                <IoEllipsisVertical className="fs-4" />
             </button>
             </div>
             </ListGroupItem>
         <ListGroupItem className="wd-assignment-item border-gray p-3 ps-3 d-flex justify-content-between align-items-start">
             <div className="me-1 flex-shrink-0 align-self-stretch d-flex align-items-center text-secondary">
-                <BsGripVertical />
+                <BsGripVertical className="me-2 fs-3" />
             </div>
             <Link
                 href={`/Courses/${cid}/Assignments/123`}
@@ -104,13 +104,13 @@ export default async function Assignments({
 
             <div className="ms-3 flex-shrink-0 align-self-stretch d-flex align-items-center">
             <button type="button" className="btn p-0 border-0 bg-transparent text-secondary">
-                <BsThreeDotsVertical className="fs-5" />
+                <IoEllipsisVertical className="fs-4" />
             </button>
             </div>
             </ListGroupItem>
             <ListGroupItem className="wd-assignment-item border-gray p-3 ps-3 d-flex justify-content-between align-items-start">
             <div className="me-1 flex-shrink-0 align-self-stretch d-flex align-items-center text-secondary">
-                <BsGripVertical />
+                <BsGripVertical className="me-2 fs-3" />
             </div>
             <Link
                 href={`/Courses/${cid}/Assignments/123`}
@@ -128,7 +128,7 @@ export default async function Assignments({
 
             <div className="ms-3 flex-shrink-0 align-self-stretch d-flex align-items-center">
             <button type="button" className="btn p-0 border-0 bg-transparent text-secondary">
-                <BsThreeDotsVertical className="fs-5" />
+                <IoEllipsisVertical className="fs-4" />
             </button>
             </div>
             </ListGroupItem>
