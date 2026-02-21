@@ -96,19 +96,19 @@ export default function Lab2() {
         <MediaQueriesDemo />
         <ReactIconsSampler />
 
-        <h2>Labs - Bootstrap - Grids</h2>
+        <h2>Labs - Grids</h2>
         <BootstrapGrids />
 
-        <h2>Labs - Bootstrap - Tables</h2>
+        <h2>Labs - Tables</h2>
         <BootstrapTables />
 
-        <h2>Labs - Bootstrap - Lists</h2>
+        <h2>Labs - Lists</h2>
         <BootstrapLists />
 
-        <h2>Labs - Bootstrap - Forms</h2>
+        <h2>Labs - Forms</h2>
         <BootstrapForms />
 
-        <h2>Labs - Bootstrap - Tabs, Pills &amp; Cards</h2>
+        <h2>Labs - Tabs, Pills &amp; Cards</h2>
         <BootstrapNavigation />
       </div>
     </Container>
