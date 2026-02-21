@@ -7,6 +7,7 @@ export default function Signup() {
       <h1 className="mb-4">Sign up</h1>
       <FormControl id="wd-username" placeholder="username" className="mb-2" defaultValue="alice" />
       <FormControl id="wd-password" placeholder="password" type="password" className="mb-2" defaultValue="password123"/>
+      <FormControl id="wd-password-verify" placeholder="verify password" type="password" className="mb-2" defaultValue="password123"/>
       <Link
         id="wd-signup-btn"
         href="/Account/Profile"
