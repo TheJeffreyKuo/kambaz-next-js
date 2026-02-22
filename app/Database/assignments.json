@@ -1,0 +1,191 @@
+[
+  {
+    "_id": "A101",
+    "title": "ENV + HTML",
+    "course": "1234",
+    "description": "The assignment is available online.\nSubmit a link to the landing page of your Web application running on Netlify.\n\n- Your full name and section\n- Links to each of the lab assignments\n- Link to the Kanbas application\n- Links to all relevant source code repositories",
+    "points": 100,
+    "dueDate": "2024-05-13",
+    "availableDate": "2024-05-06"
+  },
+  {
+    "_id": "A102",
+    "title": "CSS + BOOTSTRAP",
+    "course": "1234",
+    "description": "The assignment is available online.\nSubmit a link to the landing page of your Web application running on Netlify.",
+    "points": 100,
+    "dueDate": "2024-05-20",
+    "availableDate": "2024-05-13"
+  },
+  {
+    "_id": "A103",
+    "title": "JAVASCRIPT + REACT",
+    "course": "1234",
+    "description": "The assignment is available online.\nSubmit a link to the landing page of your Web application running on Netlify.",
+    "points": 100,
+    "dueDate": "2024-05-27",
+    "availableDate": "2024-05-20"
+  },
+  {
+    "_id": "A201",
+    "title": "Game Design Document",
+    "course": "2386",
+    "description": "Create a game design document outlining your game concept, mechanics, and visual style.",
+    "points": 150,
+    "dueDate": "2024-05-14",
+    "availableDate": "2024-05-07"
+  },
+  {
+    "_id": "A202",
+    "title": "2D Prototype",
+    "course": "2386",
+    "description": "Build a playable 2D prototype using Unity demonstrating core game mechanics.",
+    "points": 200,
+    "dueDate": "2024-05-21",
+    "availableDate": "2024-05-14"
+  },
+  {
+    "_id": "A203",
+    "title": "Final Game Project",
+    "course": "2386",
+    "description": "Submit your completed game project with source code and a brief video walkthrough.",
+    "points": 300,
+    "dueDate": "2024-05-28",
+    "availableDate": "2024-05-21"
+  },
+  {
+    "_id": "A301",
+    "title": "Binary Arithmetic Lab",
+    "course": "2310",
+    "description": "Complete the binary arithmetic exercises and submit your solutions.",
+    "points": 100,
+    "dueDate": "2024-05-13",
+    "availableDate": "2024-05-06"
+  },
+  {
+    "_id": "A302",
+    "title": "CPU Design Report",
+    "course": "2310",
+    "description": "Write a report describing the design of a simple CPU including its instruction set.",
+    "points": 150,
+    "dueDate": "2024-05-20",
+    "availableDate": "2024-05-13"
+  },
+  {
+    "_id": "A303",
+    "title": "Pipeline Simulation",
+    "course": "2310",
+    "description": "Implement a pipeline simulation and analyze hazards and performance.",
+    "points": 200,
+    "dueDate": "2024-05-27",
+    "availableDate": "2024-05-20"
+  },
+  {
+    "_id": "A401",
+    "title": "FPGA Lab 1",
+    "course": "2311",
+    "description": "Implement basic logic gates on the FPGA board and document your results.",
+    "points": 100,
+    "dueDate": "2024-05-13",
+    "availableDate": "2024-05-06"
+  },
+  {
+    "_id": "A402",
+    "title": "Sequential Circuit Design",
+    "course": "2311",
+    "description": "Design and implement a sequential circuit on the FPGA and submit a lab report.",
+    "points": 150,
+    "dueDate": "2024-05-20",
+    "availableDate": "2024-05-13"
+  },
+  {
+    "_id": "A403",
+    "title": "Assembly Program",
+    "course": "2311",
+    "description": "Write and debug an assembly language program for the given specification.",
+    "points": 200,
+    "dueDate": "2024-05-27",
+    "availableDate": "2024-05-20"
+  },
+  {
+    "_id": "A501",
+    "title": "ER Diagram Assignment",
+    "course": "3200",
+    "description": "Create an ER diagram for the given business scenario and submit it as a PDF.",
+    "points": 100,
+    "dueDate": "2024-05-13",
+    "availableDate": "2024-05-06"
+  },
+  {
+    "_id": "A502",
+    "title": "SQL Queries Lab",
+    "course": "3200",
+    "description": "Write SQL queries to answer the given questions against the provided database schema.",
+    "points": 150,
+    "dueDate": "2024-05-20",
+    "availableDate": "2024-05-13"
+  },
+  {
+    "_id": "A503",
+    "title": "Database Normalization",
+    "course": "3200",
+    "description": "Normalize the provided schema to 3NF and explain each step.",
+    "points": 200,
+    "dueDate": "2024-05-27",
+    "availableDate": "2024-05-20"
+  },
+  {
+    "_id": "A601",
+    "title": "Introductory Speech",
+    "course": "1112",
+    "description": "Deliver a 2-3 minute introductory speech about yourself to the class.",
+    "points": 100,
+    "dueDate": "2024-05-13",
+    "availableDate": "2024-05-06"
+  },
+  {
+    "_id": "A602",
+    "title": "Informative Speech",
+    "course": "1112",
+    "description": "Deliver a 5-7 minute informative speech on a topic of your choice.",
+    "points": 150,
+    "dueDate": "2024-05-20",
+    "availableDate": "2024-05-13"
+  },
+  {
+    "_id": "A603",
+    "title": "Persuasive Speech",
+    "course": "1112",
+    "description": "Deliver a 6-8 minute persuasive speech arguing for a position on a current issue.",
+    "points": 200,
+    "dueDate": "2024-05-27",
+    "availableDate": "2024-05-20"
+  },
+  {
+    "_id": "A701",
+    "title": "Qt Signals Lab",
+    "course": "6789",
+    "description": "Implement a Qt application demonstrating signals and slots communication.",
+    "points": 100,
+    "dueDate": "2024-05-13",
+    "availableDate": "2024-05-06"
+  },
+  {
+    "_id": "A702",
+    "title": "Qt Widget UI",
+    "course": "6789",
+    "description": "Design and implement a multi-screen Qt Widgets application with layouts.",
+    "points": 150,
+    "dueDate": "2024-05-20",
+    "availableDate": "2024-05-13"
+  },
+  {
+    "_id": "A703",
+    "title": "Qt Network App",
+    "course": "6789",
+    "description": "Build a Qt application that fetches and displays data from a REST API.",
+    "points": 200,
+    "dueDate": "2024-05-27",
+    "availableDate": "2024-05-20"
+  }
+]
