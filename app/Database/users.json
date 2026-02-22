@@ -1,0 +1,152 @@
+[
+  {
+    "_id": "U001",
+    "firstName": "Tony",
+    "lastName": "Stark",
+    "loginId": "001234561S",
+    "section": "S101",
+    "role": "STUDENT",
+    "lastActivity": "2020-10-01",
+    "totalActivity": "10:21:32"
+  },
+  {
+    "_id": "U002",
+    "firstName": "Bruce",
+    "lastName": "Wayne",
+    "loginId": "001234562S",
+    "section": "S101",
+    "role": "STUDENT",
+    "lastActivity": "2020-10-03",
+    "totalActivity": "09:58:11"
+  },
+  {
+    "_id": "U003",
+    "firstName": "Steve",
+    "lastName": "Rogers",
+    "loginId": "001234563S",
+    "section": "S101",
+    "role": "STUDENT",
+    "lastActivity": "2020-10-02",
+    "totalActivity": "10:44:05"
+  },
+  {
+    "_id": "U004",
+    "firstName": "Natasha",
+    "lastName": "Romanoff",
+    "loginId": "001234564S",
+    "section": "S101",
+    "role": "TA",
+    "lastActivity": "2020-10-04",
+    "totalActivity": "10:12:47"
+  },
+  {
+    "_id": "U005",
+    "firstName": "Nick",
+    "lastName": "Fury",
+    "loginId": "001234565S",
+    "section": "S101",
+    "role": "FACULTY",
+    "lastActivity": "2020-10-05",
+    "totalActivity": "12:00:00"
+  },
+  {
+    "_id": "U006",
+    "firstName": "Peter",
+    "lastName": "Parker",
+    "loginId": "001234566S",
+    "section": "S102",
+    "role": "STUDENT",
+    "lastActivity": "2020-10-06",
+    "totalActivity": "08:30:00"
+  },
+  {
+    "_id": "U007",
+    "firstName": "Wanda",
+    "lastName": "Maximoff",
+    "loginId": "001234567S",
+    "section": "S102",
+    "role": "STUDENT",
+    "lastActivity": "2020-10-07",
+    "totalActivity": "07:45:20"
+  },
+  {
+    "_id": "U008",
+    "firstName": "Thor",
+    "lastName": "Odinson",
+    "loginId": "001234568S",
+    "section": "S102",
+    "role": "STUDENT",
+    "lastActivity": "2020-10-08",
+    "totalActivity": "11:00:00"
+  },
+  {
+    "_id": "U009",
+    "firstName": "Clint",
+    "lastName": "Barton",
+    "loginId": "001234569S",
+    "section": "S103",
+    "role": "TA",
+    "lastActivity": "2020-10-09",
+    "totalActivity": "09:15:30"
+  },
+  {
+    "_id": "U010",
+    "firstName": "Bruce",
+    "lastName": "Banner",
+    "loginId": "001234570S",
+    "section": "S103",
+    "role": "FACULTY",
+    "lastActivity": "2020-10-10",
+    "totalActivity": "13:22:10"
+  },
+  {
+    "_id": "U011",
+    "firstName": "Scott",
+    "lastName": "Lang",
+    "loginId": "001234571S",
+    "section": "S104",
+    "role": "STUDENT",
+    "lastActivity": "2020-10-11",
+    "totalActivity": "06:55:00"
+  },
+  {
+    "_id": "U012",
+    "firstName": "Hope",
+    "lastName": "Pym",
+    "loginId": "001234572S",
+    "section": "S104",
+    "role": "STUDENT",
+    "lastActivity": "2020-10-12",
+    "totalActivity": "08:10:45"
+  },
+  {
+    "_id": "U013",
+    "firstName": "Stephen",
+    "lastName": "Strange",
+    "loginId": "001234573S",
+    "section": "S105",
+    "role": "FACULTY",
+    "lastActivity": "2020-10-13",
+    "totalActivity": "14:00:00"
+  },
+  {
+    "_id": "U014",
+    "firstName": "Carol",
+    "lastName": "Danvers",
+    "loginId": "001234574S",
+    "section": "S105",
+    "role": "STUDENT",
+    "lastActivity": "2020-10-14",
+    "totalActivity": "09:30:00"
+  },
+  {
+    "_id": "U015",
+    "firstName": "Sam",
+    "lastName": "Wilson",
+    "loginId": "001234575S",
+    "section": "S106",
+    "role": "STUDENT",
+    "lastActivity": "2020-10-15",
+    "totalActivity": "07:20:00"
+  }
+]
