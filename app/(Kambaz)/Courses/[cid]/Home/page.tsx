@@ -1,15 +1,21 @@
-import Modules from "../Modules/page";
+import ModulesList from "../Modules/ModulesList";
 import CourseStatus from "./Status";
-export default function Home() {
- return (
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ cid: string }>;
+}) {
+  const { cid } = await params;
+  return (
     <div id="wd-home">
       <div className="d-flex">
         <div className="flex-fill">
-          <Modules />
+          <ModulesList cid={cid} />
         </div>
         <div className="d-none d-md-block">
           <CourseStatus />
         </div>
       </div>
     </div>
-);}
+  );
+}
