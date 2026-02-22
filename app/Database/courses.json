@@ -1,0 +1,79 @@
+[
+  {
+    "_id": "1234",
+    "name": "React JS",
+    "number": "CS1234",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-10",
+    "department": "D123",
+    "credits": 4,
+    "description": "Full Stack software developer",
+    "image": "/images/reactjs.jpg"
+  },
+  {
+    "_id": "2386",
+    "name": "Game Dev",
+    "number": "CS5678",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-10",
+    "department": "D134",
+    "credits": 4,
+    "description": "Game Programming",
+    "image": "/images/game-dev.jpg"
+  },
+  {
+    "_id": "2310",
+    "name": "Comp Arch",
+    "number": "EECE2310",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-10",
+    "department": "D156",
+    "credits": 4,
+    "description": "Computer Architecture",
+    "image": "/images/computer-arch.jpg"
+  },
+  {
+    "_id": "2311",
+    "name": "Comp Arch Lab",
+    "number": "EECE2311",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-10",
+    "department": "D156",
+    "credits": 1,
+    "description": "Lab for Computer Architecture",
+    "image": "/images/computer-arch-lab.jpg"
+  },
+  {
+    "_id": "3200",
+    "name": "Databases",
+    "number": "CS3200",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-10",
+    "department": "D123",
+    "credits": 4,
+    "description": "Introduction to Databases",
+    "image": "/images/databases.jpg"
+  },
+  {
+    "_id": "1112",
+    "name": "Public Speaking",
+    "number": "COMM1112",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-10",
+    "department": "D167",
+    "credits": 3,
+    "description": "Introduction to Public Speaking",
+    "image": "/images/public-speaking.jpg"
+  },
+  {
+    "_id": "6789",
+    "name": "QT",
+    "number": "CS6789",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-10",
+    "department": "D123",
+    "credits": 4,
+    "description": "Advanced Qt Development",
+    "image": "/images/qt.jpg"
+  }
+]
