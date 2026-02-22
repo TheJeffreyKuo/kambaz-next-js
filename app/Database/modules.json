@@ -1,0 +1,233 @@
+[
+  {
+    "_id": "M101",
+    "name": "Introduction to React",
+    "description": "Overview of React and its ecosystem.",
+    "course": "1234",
+    "lessons": [
+      { "_id": "L101", "name": "LEARNING OBJECTIVES",           "description": "Overview of course goals.",                      "module": "M101" },
+      { "_id": "L102", "name": "Introduction to the course",    "description": "What to expect from this course.",              "module": "M101" },
+      { "_id": "L103", "name": "Learn what is Web Development", "description": "Introduction to web development concepts.",     "module": "M101" }
+    ]
+  },
+  {
+    "_id": "M102",
+    "name": "React Components",
+    "description": "Building and composing React components.",
+    "course": "1234",
+    "lessons": [
+      { "_id": "L201", "name": "Functional Components", "description": "Creating functional components in React.", "module": "M102" },
+      { "_id": "L202", "name": "Props and State",        "description": "Passing data with props and managing state.", "module": "M102" },
+      { "_id": "L203", "name": "Component Lifecycle",   "description": "Understanding component lifecycle methods.", "module": "M102" }
+    ]
+  },
+  {
+    "_id": "M103",
+    "name": "React State and Hooks",
+    "description": "Managing state with hooks in React.",
+    "course": "1234",
+    "lessons": [
+      { "_id": "L301", "name": "useState Hook",   "description": "Managing local state with useState.", "module": "M103" },
+      { "_id": "L302", "name": "useEffect Hook",  "description": "Handling side effects with useEffect.", "module": "M103" },
+      { "_id": "L303", "name": "Custom Hooks",    "description": "Building reusable custom hooks.", "module": "M103" }
+    ]
+  },
+  {
+    "_id": "M201",
+    "name": "Introduction to Game Development",
+    "description": "Overview of game development concepts and tools.",
+    "course": "2386",
+    "lessons": [
+      { "_id": "L401", "name": "Game Design Principles", "description": "Core principles of game design.", "module": "M201" },
+      { "_id": "L402", "name": "Game Engines Overview",  "description": "Comparing popular game engines.", "module": "M201" },
+      { "_id": "L403", "name": "Setting Up Unity",       "description": "Installing and configuring Unity.", "module": "M201" }
+    ]
+  },
+  {
+    "_id": "M202",
+    "name": "2D Game Development",
+    "description": "Building 2D games using sprites and physics.",
+    "course": "2386",
+    "lessons": [
+      { "_id": "L411", "name": "Sprites and Animation",  "description": "Working with 2D sprites and animations.", "module": "M202" },
+      { "_id": "L412", "name": "2D Physics",             "description": "Applying physics to 2D game objects.", "module": "M202" },
+      { "_id": "L413", "name": "Collision Detection",    "description": "Detecting and handling collisions.", "module": "M202" }
+    ]
+  },
+  {
+    "_id": "M203",
+    "name": "3D Game Development",
+    "description": "Creating 3D environments and gameplay mechanics.",
+    "course": "2386",
+    "lessons": [
+      { "_id": "L421", "name": "3D Modeling Basics",     "description": "Introduction to 3D modeling for games.", "module": "M203" },
+      { "_id": "L422", "name": "Lighting and Shaders",   "description": "Lighting techniques and shader programming.", "module": "M203" },
+      { "_id": "L423", "name": "3D Physics and Rigging", "description": "Physics simulation and character rigging.", "module": "M203" }
+    ]
+  },
+  {
+    "_id": "M301",
+    "name": "Introduction to Computer Architecture",
+    "description": "Fundamentals of how computers are designed and built.",
+    "course": "2310",
+    "lessons": [
+      { "_id": "L501", "name": "Binary and Logic Gates",      "description": "Binary number system and logic gates.", "module": "M301" },
+      { "_id": "L502", "name": "CPU Architecture Overview",   "description": "Overview of CPU design.", "module": "M301" },
+      { "_id": "L503", "name": "Instruction Set Architecture","description": "Understanding ISA design.", "module": "M301" }
+    ]
+  },
+  {
+    "_id": "M302",
+    "name": "Memory Hierarchy",
+    "description": "Cache, RAM, and storage systems.",
+    "course": "2310",
+    "lessons": [
+      { "_id": "L511", "name": "Cache Memory",    "description": "How cache memory works.", "module": "M302" },
+      { "_id": "L512", "name": "Virtual Memory",  "description": "Virtual memory and paging.", "module": "M302" },
+      { "_id": "L513", "name": "Storage Systems", "description": "Overview of storage technologies.", "module": "M302" }
+    ]
+  },
+  {
+    "_id": "M303",
+    "name": "Pipelining and Parallelism",
+    "description": "Techniques for improving CPU throughput.",
+    "course": "2310",
+    "lessons": [
+      { "_id": "L521", "name": "Pipeline Stages",     "description": "Stages of the CPU pipeline.", "module": "M303" },
+      { "_id": "L522", "name": "Hazards and Stalls",  "description": "Handling pipeline hazards.", "module": "M303" },
+      { "_id": "L523", "name": "Parallel Processing", "description": "Introduction to parallel computing.", "module": "M303" }
+    ]
+  },
+  {
+    "_id": "M401",
+    "name": "Computer Architecture Lab Intro",
+    "description": "Introduction to lab tools and environment.",
+    "course": "2311",
+    "lessons": [
+      { "_id": "L601", "name": "Lab Setup and Tools",  "description": "Setting up the lab environment.", "module": "M401" },
+      { "_id": "L602", "name": "Basic Circuit Design", "description": "Designing basic digital circuits.", "module": "M401" },
+      { "_id": "L603", "name": "FPGA Introduction",    "description": "Introduction to FPGA programming.", "module": "M401" }
+    ]
+  },
+  {
+    "_id": "M402",
+    "name": "Digital Logic Design",
+    "description": "Designing combinational and sequential circuits.",
+    "course": "2311",
+    "lessons": [
+      { "_id": "L611", "name": "Combinational Circuits", "description": "Designing combinational logic circuits.", "module": "M402" },
+      { "_id": "L612", "name": "Sequential Circuits",    "description": "Designing sequential logic circuits.", "module": "M402" },
+      { "_id": "L613", "name": "State Machines",         "description": "Implementing finite state machines.", "module": "M402" }
+    ]
+  },
+  {
+    "_id": "M403",
+    "name": "Assembly Programming Lab",
+    "description": "Writing and debugging assembly language programs.",
+    "course": "2311",
+    "lessons": [
+      { "_id": "L621", "name": "Assembly Syntax",      "description": "Basic assembly language syntax.", "module": "M403" },
+      { "_id": "L622", "name": "Registers and Memory", "description": "Working with registers and memory.", "module": "M403" },
+      { "_id": "L623", "name": "Debugging Assembly",   "description": "Techniques for debugging assembly code.", "module": "M403" }
+    ]
+  },
+  {
+    "_id": "M501",
+    "name": "Introduction to Databases",
+    "description": "Overview of database systems and data modeling.",
+    "course": "3200",
+    "lessons": [
+      { "_id": "L701", "name": "What is a Database?", "description": "Introduction to database concepts.", "module": "M501" },
+      { "_id": "L702", "name": "Relational Model",    "description": "The relational data model.", "module": "M501" },
+      { "_id": "L703", "name": "ER Diagrams",         "description": "Creating entity-relationship diagrams.", "module": "M501" }
+    ]
+  },
+  {
+    "_id": "M502",
+    "name": "SQL and Querying",
+    "description": "Writing SQL queries to interact with databases.",
+    "course": "3200",
+    "lessons": [
+      { "_id": "L711", "name": "SELECT Statements",     "description": "Writing basic SELECT queries.", "module": "M502" },
+      { "_id": "L712", "name": "Joins and Subqueries",  "description": "Combining tables with joins.", "module": "M502" },
+      { "_id": "L713", "name": "Aggregation Functions", "description": "Using GROUP BY and aggregate functions.", "module": "M502" }
+    ]
+  },
+  {
+    "_id": "M503",
+    "name": "Database Design and Normalization",
+    "description": "Designing efficient and normalized database schemas.",
+    "course": "3200",
+    "lessons": [
+      { "_id": "L721", "name": "1NF, 2NF, 3NF",         "description": "Understanding normalization forms.", "module": "M503" },
+      { "_id": "L722", "name": "BCNF and Beyond",        "description": "Advanced normalization techniques.", "module": "M503" },
+      { "_id": "L723", "name": "Schema Design Practice", "description": "Applying normalization in practice.", "module": "M503" }
+    ]
+  },
+  {
+    "_id": "M601",
+    "name": "Foundations of Public Speaking",
+    "description": "Core concepts and principles of effective public speaking.",
+    "course": "1112",
+    "lessons": [
+      { "_id": "L801", "name": "Overcoming Speech Anxiety", "description": "Techniques to manage nervousness.", "module": "M601" },
+      { "_id": "L802", "name": "Audience Analysis",         "description": "Understanding your audience.", "module": "M601" },
+      { "_id": "L803", "name": "Speech Organization",       "description": "Structuring an effective speech.", "module": "M601" }
+    ]
+  },
+  {
+    "_id": "M602",
+    "name": "Delivery and Presentation",
+    "description": "Techniques for effective vocal and physical delivery.",
+    "course": "1112",
+    "lessons": [
+      { "_id": "L811", "name": "Vocal Variety", "description": "Using pitch and pace effectively.", "module": "M602" },
+      { "_id": "L812", "name": "Body Language",  "description": "Nonverbal communication techniques.", "module": "M602" },
+      { "_id": "L813", "name": "Visual Aids",    "description": "Using slides and props effectively.", "module": "M602" }
+    ]
+  },
+  {
+    "_id": "M603",
+    "name": "Persuasive and Informative Speaking",
+    "description": "Crafting and delivering persuasive and informative speeches.",
+    "course": "1112",
+    "lessons": [
+      { "_id": "L821", "name": "Informative Speech",    "description": "Structuring an informative talk.", "module": "M603" },
+      { "_id": "L822", "name": "Persuasive Techniques", "description": "Using rhetoric and evidence.", "module": "M603" },
+      { "_id": "L823", "name": "Debate and Discussion", "description": "Engaging in structured debate.", "module": "M603" }
+    ]
+  },
+  {
+    "_id": "M701",
+    "name": "Introduction to Qt",
+    "description": "Overview of the Qt framework and its applications.",
+    "course": "6789",
+    "lessons": [
+      { "_id": "L901", "name": "Qt Overview",      "description": "What is Qt and what it can do.", "module": "M701" },
+      { "_id": "L902", "name": "Qt Creator IDE",   "description": "Setting up and using Qt Creator.", "module": "M701" },
+      { "_id": "L903", "name": "Signals and Slots","description": "Qt's event-driven programming model.", "module": "M701" }
+    ]
+  },
+  {
+    "_id": "M702",
+    "name": "Qt Widgets and UI Design",
+    "description": "Building desktop UIs with Qt Widgets.",
+    "course": "6789",
+    "lessons": [
+      { "_id": "L911", "name": "Qt Widgets Overview", "description": "Overview of available Qt widgets.", "module": "M702" },
+      { "_id": "L912", "name": "Layouts and Forms",   "description": "Arranging widgets with layout managers.", "module": "M702" },
+      { "_id": "L913", "name": "Custom Widgets",      "description": "Creating custom Qt widget components.", "module": "M702" }
+    ]
+  },
+  {
+    "_id": "M703",
+    "name": "Qt Network and Data",
+    "description": "Networking and data management in Qt applications.",
+    "course": "6789",
+    "lessons": [
+      { "_id": "L921", "name": "HTTP Requests in Qt", "description": "Making HTTP calls from Qt apps.", "module": "M703" },
+      { "_id": "L922", "name": "Qt SQL Module",       "description": "Connecting Qt to SQL databases.", "module": "M703" },
+      { "_id": "L923", "name": "JSON Handling in Qt", "description": "Parsing and generating JSON in Qt.", "module": "M703" }
+    ]
+  }
+]
