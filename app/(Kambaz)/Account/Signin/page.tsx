@@ -1,26 +1,34 @@
-import Link from "next/link";
-import { FormControl } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-
+"use client";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "../reducer";
+import * as db from "../../../Database";
+import { useRouter } from "next/navigation";
+import { FormControl, Button } from "react-bootstrap";
 export default function Signin() {
+  const [credentials, setCredentials] = useState<any>({});
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const signin = () => {
+    const user = db.users.find(
+      (u: any) => u.username === credentials.username && u.password === credentials.password
+    );
+    if (!user) return;
+    dispatch(setCurrentUser(user));
+    router.push("/Dashboard");
+  };
   return (
-    <div id="wd-signin-screen" className="p-4" style={{ maxWidth: "400px" }}>
-      <h1 className="mb-4">Sign in</h1>
-     <FormControl
-        id="wd-username"
-        className="mb-2"
-        placeholder="username"
-        type="text"
-        defaultValue="Johndoe"
-      />
-     <FormControl
-        id="wd-password"
-        className="mb-2"
-        placeholder="password"
-        type="password"
-        defaultValue="dontlookhere"
-      />
-      <Link id="wd-signin-btn" className="btn btn-primary w-100 mb-2"href="/Dashboard"> Sign in </Link> <br />
-      <Link id="wd-signup-link" className="text-primary text-decoration-underline" href="/Account/Signup"> Sign up </Link>
+    <div id="wd-signin-screen">
+      <h3>Sign in</h3>
+      <FormControl id="wd-username"
+        defaultValue={credentials.username}
+        onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+        placeholder="username" className="mb-2" />
+      <FormControl id="wd-password"
+        defaultValue={credentials.password}
+        onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+        placeholder="password" type="password" className="mb-2" />
+      <Button onClick={signin} id="wd-signin-btn" className="w-100 mb-2"> Sign in </Button>
     </div>
-);}
+  );
+}
