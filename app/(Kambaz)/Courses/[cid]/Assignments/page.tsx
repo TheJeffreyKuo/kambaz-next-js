@@ -13,6 +13,8 @@ import { RootState } from "../../../store";
 export default function Assignments() {
   const { cid } = useParams();
   const { assignments } = useSelector((state: RootState) => state.assignmentsReducer);
+  const { currentUser } = useSelector((state: RootState) => state.accountReducer);
+  const isFaculty = currentUser?.role === "FACULTY";
   const dispatch = useDispatch();
   const courseAssignments = assignments.filter((a: any) => a.course === cid);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -38,16 +40,18 @@ export default function Assignments() {
           <input type="text" className="form-control border-start-0"
             placeholder="Search..." id="wd-search-assignment" aria-label="Search..." />
         </div>
-        <div className="d-flex ms-auto gap-1">
-          <Button variant="secondary" size="lg" id="wd-add-assignment-group" className="text-nowrap rounded-1">
-            <FaPlus className="me-2" style={{ verticalAlign: "middle" }} />Group
-          </Button>
-          <Link href={`/Courses/${cid}/Assignments/new`}>
-            <Button variant="danger" size="lg" id="wd-add-assignment" className="text-nowrap rounded-1">
-              <FaPlus className="me-2" style={{ verticalAlign: "middle" }} />Assignment
+        {isFaculty && (
+          <div className="d-flex ms-auto gap-1">
+            <Button variant="secondary" size="lg" id="wd-add-assignment-group" className="text-nowrap rounded-1">
+              <FaPlus className="me-2" style={{ verticalAlign: "middle" }} />Group
             </Button>
-          </Link>
-        </div>
+            <Link href={`/Courses/${cid}/Assignments/new`}>
+              <Button variant="danger" size="lg" id="wd-add-assignment" className="text-nowrap rounded-1">
+                <FaPlus className="me-2" style={{ verticalAlign: "middle" }} />Assignment
+              </Button>
+            </Link>
+          </div>
+        )}
       </div>
       <div className="wd-Assignments-section mb-4">
         <div className="d-flex align-items-center justify-content-between p-3 ps-2 bg-secondary rounded mb-2">
@@ -72,12 +76,14 @@ export default function Assignments() {
                   {new Date(assignment.dueDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })} | {assignment.points}pts
                 </div>
               </Link>
-              <div className="ms-3 flex-shrink-0 align-self-stretch d-flex align-items-center">
-                <FaTrash className="text-danger me-2 mb-1" onClick={() => handleDeleteClick(assignment._id)} />
-                <button type="button" className="btn p-0 border-0 bg-transparent text-secondary">
-                  <IoEllipsisVertical className="fs-4" />
-                </button>
-              </div>
+              {isFaculty && (
+                <div className="ms-3 flex-shrink-0 align-self-stretch d-flex align-items-center">
+                  <FaTrash className="text-danger me-2 mb-1" onClick={() => handleDeleteClick(assignment._id)} />
+                  <button type="button" className="btn p-0 border-0 bg-transparent text-secondary">
+                    <IoEllipsisVertical className="fs-4" />
+                  </button>
+                </div>
+              )}
             </ListGroupItem>
           ))}
         </ListGroup>

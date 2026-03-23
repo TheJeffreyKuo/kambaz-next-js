@@ -12,6 +12,8 @@ export default function AssignmentEditor() {
   const router = useRouter();
   const dispatch = useDispatch();
   const { assignments } = useSelector((state: RootState) => state.assignmentsReducer);
+  const { currentUser } = useSelector((state: RootState) => state.accountReducer);
+  const isFaculty = currentUser?.role === "FACULTY";
   const existingAssignment = assignments.find(
     (a: any) => a._id === aid && a.course === cid
   );
@@ -102,7 +104,9 @@ export default function AssignmentEditor() {
         <tr>
           <td colSpan={2} align="right">
             <Button type="button" id="wd-cancel" onClick={handleCancel}>Cancel</Button>{" "}
-            <Button type="button" id="wd-save" variant="danger" onClick={handleSave}>Save</Button>
+            {isFaculty && (
+              <Button type="button" id="wd-save" variant="danger" onClick={handleSave}>Save</Button>
+            )}
           </td>
         </tr>
       </tbody></table>

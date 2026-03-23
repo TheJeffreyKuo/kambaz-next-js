@@ -24,25 +24,34 @@ export default function Dashboard() {
           (e: any) => e.user === currentUser?._id && e.course === c._id
         )
       );
+  const isFaculty = currentUser?.role === "FACULTY";
   return (
     <div className="p-4" id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
       <h5>New Course
-        <button className="btn btn-primary float-end"
-          id="wd-add-new-course-click"
-          onClick={() => dispatch(addNewCourse(course))} > Add </button>
-        <button className="btn btn-warning float-end me-2"
-          onClick={() => dispatch(updateCourse(course))} id="wd-update-course-click">
-          Update </button>
+        {isFaculty && (
+          <button className="btn btn-primary float-end"
+            id="wd-add-new-course-click"
+            onClick={() => dispatch(addNewCourse(course))} > Add </button>
+        )}
+        {isFaculty && (
+          <button className="btn btn-warning float-end me-2"
+            onClick={() => dispatch(updateCourse(course))} id="wd-update-course-click">
+            Update </button>
+        )}
         <button className="btn btn-info float-end me-2"
           onClick={() => setShowAllCourses(!showAllCourses)}
           id="wd-enrollments-click">
           Enrollments </button>
       </h5><br />
-      <FormControl value={course.name} className="mb-2"
-        onChange={(e) => setCourse({ ...course, name: e.target.value }) } />
-      <FormControl as="textarea" value={course.description} rows={3} className="mb-2"
-        onChange={(e) => setCourse({ ...course, description: e.target.value }) } />
+      {isFaculty && (
+        <>
+          <FormControl value={course.name} className="mb-2"
+            onChange={(e) => setCourse({ ...course, name: e.target.value }) } />
+          <FormControl as="textarea" value={course.description} rows={3} className="mb-2"
+            onChange={(e) => setCourse({ ...course, description: e.target.value }) } />
+        </>
+      )}
       <hr />
       <h2 id="wd-dashboard-published">Published Courses ({filteredCourses.length})</h2> <hr />
       <div id="wd-dashboard-courses">
@@ -82,7 +91,7 @@ export default function Dashboard() {
                           </button>
                         )
                       )}
-                      {!showAllCourses && (
+                      {!showAllCourses && isFaculty && (
                         <>
                           <button onClick={(event) => {
                             event.preventDefault();
