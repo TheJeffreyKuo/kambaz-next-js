@@ -23,6 +23,10 @@ export default function labs() {
          <Link href="/Labs/Lab4" id="wd-lab4-link">
            Lab 4: Maintaining State </Link>
        </li>
+       <li>
+         <Link href="/Labs/Lab5" id="wd-lab5-link">
+           Lab 5: Implementing RESTful Web APIs </Link>
+       </li>
      </ul>
    </div>
 );}
