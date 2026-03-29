@@ -5,8 +5,9 @@ import {
   Form, FormLabel, FormControl, FormSelect, FormCheck, Button,
 } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { addAssignment, updateAssignment } from "../reducer";
+import { setAssignments } from "../reducer";
 import { RootState } from "../../../../store";
+import * as client from "../../../client";
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
   const router = useRouter();
@@ -25,9 +26,14 @@ export default function AssignmentEditor() {
   useEffect(() => {
     if (existingAssignment) { setAssignment(existingAssignment); }
   }, []);
-  const handleSave = () => {
-    if (isNew) { dispatch(addAssignment({ ...assignment, course: cid })); }
-    else { dispatch(updateAssignment(assignment)); }
+  const handleSave = async () => {
+    if (isNew) {
+      const newAssignment = await client.createAssignmentForCourse(cid as string, { ...assignment, course: cid });
+      dispatch(setAssignments([...assignments, newAssignment]));
+    } else {
+      await client.updateAssignment(assignment);
+      dispatch(setAssignments(assignments.map((a: any) => a._id === assignment._id ? assignment : a)));
+    }
     router.push(`/Courses/${cid}/Assignments`);
   };
   const handleCancel = () => { router.push(`/Courses/${cid}/Assignments`); };
