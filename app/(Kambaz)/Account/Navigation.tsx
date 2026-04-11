@@ -15,5 +15,11 @@ export default function AccountNavigation() {
           <NavLink as={Link} href={`/Account/${link}`} active={pathname.includes(link)}>
             {link} </NavLink> </NavItem>
       ))}
+      {currentUser && currentUser.role === "ADMIN" && (
+        <NavItem>
+          <NavLink as={Link} href={`/Account/Users`} active={pathname.includes("Users")}>
+            Users </NavLink>
+        </NavItem>
+      )}
     </Nav>
   );}
