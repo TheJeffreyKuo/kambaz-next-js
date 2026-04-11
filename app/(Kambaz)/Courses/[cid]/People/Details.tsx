@@ -28,11 +28,14 @@ export default function PeopleDetails({ uid, onClose }: { uid: string | null; on
     onClose();
   };
   const saveUser = async () => {
-    const [firstName, lastName] = name.split(" ");
-    const updatedUser = { ...user, firstName, lastName,
-      ...(email && { email }),
-      ...(role && { role }),
-    };
+    const updatedUser = { ...user };
+    if (name) {
+      const [firstName, lastName] = name.split(" ");
+      updatedUser.firstName = firstName;
+      updatedUser.lastName = lastName;
+    }
+    if (email) updatedUser.email = email;
+    if (role) updatedUser.role = role;
     await client.updateUser(updatedUser);
     setUser(updatedUser);
     setEditing(false);
