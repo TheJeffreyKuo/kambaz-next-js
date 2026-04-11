@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCourses } from "../Courses/reducer";
 import { RootState } from "../store";
 import * as client from "../Courses/client";
-import * as enrollmentsClient from "../Enrollments/client";
 export default function Dashboard() {
   const { courses } = useSelector((state: RootState) => state.coursesReducer);
   const { currentUser } = useSelector((state: RootState) => state.accountReducer);
@@ -30,8 +29,8 @@ export default function Dashboard() {
     try {
       const allCourses = await client.fetchAllCourses();
       dispatch(setCourses(allCourses));
-      const enrollments = await enrollmentsClient.findMyEnrollments();
-      setEnrolledCourseIds(enrollments.map((e: any) => e.course));
+      const myCourses = await client.findMyCourses();
+      setEnrolledCourseIds(myCourses.map((c: any) => c._id));
     } catch (error) {
       console.error(error);
     }
@@ -63,11 +62,11 @@ export default function Dashboard() {
     })));
   };
   const handleEnroll = async (courseId: string) => {
-    await enrollmentsClient.enrollInCourse(courseId);
+    await client.enrollIntoCourse("current", courseId);
     setEnrolledCourseIds([...enrolledCourseIds, courseId]);
   };
   const handleUnenroll = async (courseId: string) => {
-    await enrollmentsClient.unenrollFromCourse(courseId);
+    await client.unenrollFromCourse("current", courseId);
     setEnrolledCourseIds(enrolledCourseIds.filter((id) => id !== courseId));
   };
   return (
