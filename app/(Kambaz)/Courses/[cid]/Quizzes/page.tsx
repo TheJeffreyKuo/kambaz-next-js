@@ -6,7 +6,7 @@ import { Button, ListGroup, ListGroupItem, Modal, Dropdown, DropdownItem, Dropdo
 import { FaPlus } from "react-icons/fa6";
 import { FaCheckCircle, FaBan } from "react-icons/fa";
 import { IoEllipsisVertical, IoSearch } from "react-icons/io5";
-import { BsGripVertical, BsPlus } from "react-icons/bs";
+import { BsGripVertical } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store";
 import * as client from "../../client";
@@ -147,7 +147,7 @@ export default function Quizzes() {
       </div>
       <div className="wd-Quizzes-section mb-4">
         <div className="d-flex align-items-center p-3 ps-2 bg-secondary rounded mb-2">
-          <Button variant="secondary" size="sm"><BsPlus className="fs-4" /></Button>Assignment Quizzes
+          Assignment Quizzes
         </div>
         {visibleQuizzes.length === 0 ? (
           <p className="text-muted text-center py-4">
