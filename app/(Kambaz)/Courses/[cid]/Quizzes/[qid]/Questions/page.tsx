@@ -188,10 +188,11 @@ export default function QuizQuestionsEditor() {
   const [editingId, setEditingId] = useState<string | null>(null);
 
   useEffect(() => {
+    dispatch(setQuestions([]));
     client.findQuestionsForQuiz(cid as string, qid as string)
-      .then(data => dispatch(setQuestions(data)))
+      .then(data => dispatch(setQuestions(data || [])))
       .catch(() => {});
-  }, []);
+  }, [cid, qid]);
 
   const totalPoints = questions.reduce((sum: number, q: any) => sum + (q.points || 0), 0);
 

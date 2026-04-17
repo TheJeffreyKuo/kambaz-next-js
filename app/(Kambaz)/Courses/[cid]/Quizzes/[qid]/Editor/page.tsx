@@ -191,8 +191,13 @@ export default function QuizDetailsEditor() {
               <Form.Label>Show Correct Answers</Form.Label>
             </td>
             <td className="py-2">
-              <FormControl value={quiz.showCorrectAnswers} placeholder="e.g. Immediately"
-                onChange={e => setQuiz({ ...quiz, showCorrectAnswers: e.target.value })} />
+              <FormSelect value={quiz.showCorrectAnswers || ""}
+                onChange={e => setQuiz({ ...quiz, showCorrectAnswers: e.target.value })}>
+                <option value="">Never</option>
+                <option value="Immediately">Immediately</option>
+                <option value="After last attempt">After last attempt</option>
+                <option value="After due date">After due date</option>
+              </FormSelect>
             </td>
           </tr>
           <tr>

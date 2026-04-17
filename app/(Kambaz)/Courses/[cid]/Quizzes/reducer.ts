@@ -19,7 +19,7 @@ const quizzesSlice = createSlice({
     },
     updateQuiz: (state, { payload: quiz }) => {
       state.quizzes = state.quizzes.map((q: any) =>
-        q._id === quiz._id ? quiz : q
+        q._id === quiz._id ? { ...q, ...quiz } : q
       ) as any;
     },
   },
