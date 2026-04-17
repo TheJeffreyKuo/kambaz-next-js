@@ -9,10 +9,10 @@ import * as client from "../client";
 export default function Signup() {
   const [user, setUser] = useState<any>({});
   const [credentials, setCredentials] = useState<any>({
-  role: "student",});
+  role: "STUDENT",});
   const dispatch = useDispatch();
   const signup = async () => {
-    const currentUser = await client.signup(user);
+    const currentUser = await client.signup({ ...user, role: credentials.role });
     dispatch(setCurrentUser(currentUser));
     redirect("/Account/Profile");
   };
@@ -24,14 +24,14 @@ export default function Signup() {
       <FormControl value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })}
         className="wd-password mb-2" placeholder="password" type="password"/>
                     <FormControl as="select" id="wd-role"
-        value={credentials.role || "student"}
+        value={credentials.role || "STUDENT"}
         onChange={(e) =>
           setCredentials({ ...credentials, role: e.target.value })
         }
         className="mb-2"
       >
-        <option value="student">Student</option>
-        <option value="faculty">Faculty</option>
+        <option value="STUDENT">Student</option>
+        <option value="FACULTY">Faculty</option>
       </FormControl>
       <button onClick={signup} className="wd-signup-btn btn btn-primary mb-2 w-100"> Sign up </button><br />
       <Link href="/Account/Signin" className="wd-signin-link">Sign in</Link>

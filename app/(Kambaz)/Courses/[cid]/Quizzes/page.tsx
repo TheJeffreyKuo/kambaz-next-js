@@ -86,7 +86,7 @@ export default function Quizzes() {
             placeholder="Search..." id="wd-search-quiz" aria-label="Search..." />
         </div>
         <div className="d-flex ms-auto gap-1">
-          <Link href={`/Courses/${cid}/Quizzes/new`}>
+          <Link href={`/Courses/${cid}/Quizzes/new/Editor`}>
             <Button variant="danger" size="lg" id="wd-add-quiz" className="text-nowrap rounded-1">
               <FaPlus className="me-2" style={{ verticalAlign: "middle" }} />Quiz
             </Button>
@@ -129,7 +129,7 @@ export default function Quizzes() {
                 </DropdownToggle>
 
                 <DropdownMenu>
-                  <DropdownItem onClick={() => router.push(`/Courses/${cid}/Quizzes/${quiz._id}`)}>
+                  <DropdownItem onClick={() => router.push(`/Courses/${cid}/Quizzes/${quiz._id}/Editor`)}>
                     Edit
                   </DropdownItem>
 
