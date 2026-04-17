@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../../../store";
 import { addQuiz, updateQuiz } from "../../reducer";
 import * as client from "../../client";
+import RichTextEditor from "../../RichTextEditor";
 
 const defaultQuiz = (cid: string) => ({
   title: "Unnamed Quiz",
@@ -107,9 +108,11 @@ export default function QuizDetailsEditor() {
 
         <Form.Group className="mb-3">
           <Form.Label>Quiz Instructions</Form.Label>
-          <FormControl as="textarea" rows={6} placeholder="Quiz description/instructions"
+          <RichTextEditor
             value={quiz.description}
-            onChange={e => setQuiz({ ...quiz, description: e.target.value })} />
+            onChange={(v) => setQuiz({ ...quiz, description: v })}
+            placeholder="Quiz description/instructions"
+          />
         </Form.Group>
 
         <table className="w-100"><tbody>

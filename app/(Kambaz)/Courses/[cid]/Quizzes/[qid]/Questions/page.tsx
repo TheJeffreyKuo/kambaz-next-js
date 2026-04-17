@@ -5,7 +5,10 @@ import { Button, Form, FormControl, FormSelect } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../../../store";
 import { setQuestions, addQuestion, deleteQuestion, updateQuestion } from "./reducer";
+import { updateQuiz as updateQuizAction } from "../../reducer";
 import * as client from "../../client";
+import * as coursesClient from "../../../../client";
+import RichTextEditor from "../../RichTextEditor";
 
 type QuestionType = "multiple_choice" | "true_false" | "fill_in_blank";
 
@@ -40,14 +43,16 @@ function MultipleChoiceEditor({ q, onChange }: { q: Question; onChange: (q: Ques
   return (
     <div>
       <p className="small text-muted">Enter your question and multiple answers, then select the one correct answer.</p>
-      <FormControl as="textarea" rows={3} placeholder="Question text" className="mb-3"
-        value={q.question} onChange={e => onChange({ ...q, question: e.target.value })} />
+      <div className="mb-3">
+        <RichTextEditor value={q.question} onChange={(v) => onChange({ ...q, question: v })} placeholder="Question text" />
+      </div>
       <strong>Answers:</strong>
       {choices.map(c => (
-        <div key={c.id} className="d-flex align-items-center gap-2 mt-2">
+        <div key={c.id} className="d-flex align-items-start gap-2 mt-2">
           <Form.Check type="radio" name={`correct-${q._id}`} checked={c.isCorrect}
-            onChange={() => setCorrect(c.id)} />
-          <FormControl placeholder={c.isCorrect ? "Correct Answer" : "Possible Answer"}
+            onChange={() => setCorrect(c.id)} className="mt-2" />
+          <FormControl as="textarea" rows={2}
+            placeholder={c.isCorrect ? "Correct Answer" : "Possible Answer"}
             value={c.text} onChange={e => setChoiceText(c.id, e.target.value)}
             className={c.isCorrect ? "border-success" : ""} />
           <Button variant="outline-danger" size="sm" onClick={() => removeChoice(c.id)}>✕</Button>
@@ -62,8 +67,9 @@ function TrueFalseEditor({ q, onChange }: { q: Question; onChange: (q: Question)
   return (
     <div>
       <p className="small text-muted">Enter your question text, then select if True or False is the correct answer.</p>
-      <FormControl as="textarea" rows={3} placeholder="Question text" className="mb-3"
-        value={q.question} onChange={e => onChange({ ...q, question: e.target.value })} />
+      <div className="mb-3">
+        <RichTextEditor value={q.question} onChange={(v) => onChange({ ...q, question: v })} placeholder="Question text" />
+      </div>
       <strong>Answers:</strong>
       <div className="mt-2">
         <Form.Check type="radio" label="True" name={`tf-${q._id}`}
@@ -90,13 +96,14 @@ function FillInBlankEditor({ q, onChange }: { q: Question; onChange: (q: Questio
         Enter your question text, then define all possible correct answers for the blank.
         Students will see the question followed by a small text box to type their answer.
       </p>
-      <FormControl as="textarea" rows={3} placeholder="Question text" className="mb-3"
-        value={q.question} onChange={e => onChange({ ...q, question: e.target.value })} />
+      <div className="mb-3">
+        <RichTextEditor value={q.question} onChange={(v) => onChange({ ...q, question: v })} placeholder="Question text" />
+      </div>
       <strong>Answers:</strong>
       {answers.map((a, i) => (
-        <div key={i} className="d-flex align-items-center gap-2 mt-2">
-          <span className="text-muted small">Possible Answer</span>
-          <FormControl value={a} onChange={e => setAnswer(i, e.target.value)} />
+        <div key={i} className="d-flex align-items-start gap-2 mt-2">
+          <span className="text-muted small mt-2" style={{ minWidth: 110 }}>Possible Answer</span>
+          <FormControl as="textarea" rows={2} value={a} onChange={e => setAnswer(i, e.target.value)} />
           <Button variant="outline-danger" size="sm" onClick={() => removeAnswer(i)}>✕</Button>
         </div>
       ))}
@@ -123,7 +130,7 @@ function QuestionEditor({
   };
   return (
     <div className="border rounded p-3 mb-3 bg-white">
-      <div className="d-flex gap-2 align-items-center mb-3">
+      <div className="d-flex gap-2 align-items-center mb-3 flex-wrap">
         <FormControl placeholder="Question Title" value={q.title}
           onChange={e => setQ({ ...q, title: e.target.value })} style={{ maxWidth: 200 }} />
         <FormSelect value={q.type} onChange={e => handleTypeChange(e.target.value as QuestionType)}
@@ -155,12 +162,14 @@ function QuestionPreview({ question, onEdit, onDelete }: { question: Question; o
     : question.type === "true_false" ? "True/False" : "Fill in the Blank";
   return (
     <div className="border rounded p-3 mb-3 bg-light d-flex justify-content-between align-items-start">
-      <div>
+      <div style={{ minWidth: 0 }}>
         <strong>{question.title}</strong>
         <span className="text-muted small ms-2">({typeLabel})</span>
-        {question.question && <p className="mt-1 mb-0 small">{question.question}</p>}
+        {question.question && (
+          <div className="mt-1 small" dangerouslySetInnerHTML={{ __html: question.question }} />
+        )}
       </div>
-      <div className="d-flex align-items-center gap-2 ms-3">
+      <div className="d-flex align-items-center gap-2 ms-3 flex-shrink-0">
         <span className="small">{question.points} pts</span>
         {onEdit && <Button variant="outline-secondary" size="sm" onClick={onEdit}>Edit</Button>}
         {onDelete && <Button variant="outline-danger" size="sm" onClick={onDelete}>✕</Button>}
@@ -186,6 +195,17 @@ export default function QuizQuestionsEditor() {
 
   const totalPoints = questions.reduce((sum: number, q: any) => sum + (q.points || 0), 0);
 
+  const syncQuizMeta = async (nextQuestions: Question[]) => {
+    const points = nextQuestions.reduce((s, q) => s + (q.points || 0), 0);
+    const questionCount = nextQuestions.length;
+    try {
+      const saved = await client.updateQuiz({ _id: qid as string, points, questionCount });
+      dispatch(updateQuizAction(saved && saved._id ? saved : { _id: qid, points, questionCount }));
+    } catch {
+      dispatch(updateQuizAction({ _id: qid, points, questionCount }));
+    }
+  };
+
   const handleNewQuestion = () => {
     const q = newQuestion(qid as string);
     dispatch(addQuestion(q));
@@ -193,22 +213,26 @@ export default function QuizQuestionsEditor() {
   };
 
   const handleSaveQuestion = async (q: Question) => {
-    const isNew = q._id.startsWith("new-");
-    if (isNew) {
+    const wasNew = q._id.startsWith("new-");
+    let savedQuestion: Question = q;
+    if (wasNew) {
       try {
-        const saved = await client.createQuestionForQuiz(cid as string, qid as string, q);
+        const saved = await client.createQuestionForQuiz(cid as string, qid as string, { ...q, _id: undefined });
+        savedQuestion = saved;
         dispatch(deleteQuestion(q._id));
         dispatch(addQuestion(saved));
-        setEditingId(null);
       } catch {
         dispatch(updateQuestion(q));
-        setEditingId(null);
       }
     } else {
       try { await client.updateQuestion(q); } catch {}
       dispatch(updateQuestion(q));
-      setEditingId(null);
     }
+    setEditingId(null);
+    const next = wasNew
+      ? [...questions.filter((x: any) => x._id !== q._id), savedQuestion]
+      : questions.map((x: any) => (x._id === savedQuestion._id ? savedQuestion : x));
+    await syncQuizMeta(next as Question[]);
   };
 
   const handleDeleteQuestion = async (questionId: string) => {
@@ -217,10 +241,19 @@ export default function QuizQuestionsEditor() {
     }
     dispatch(deleteQuestion(questionId));
     if (editingId === questionId) setEditingId(null);
+    const next = questions.filter((x: any) => x._id !== questionId);
+    await syncQuizMeta(next as Question[]);
   };
 
   const handleCancel = () => router.push(`/Courses/${cid}/Quizzes/${qid}`);
   const handleSave = () => router.push(`/Courses/${cid}/Quizzes/${qid}`);
+  const handleSaveAndPublish = async () => {
+    try {
+      await coursesClient.publishQuiz(qid as string);
+      dispatch(updateQuizAction({ _id: qid, published: true }));
+    } catch {}
+    router.push(`/Courses/${cid}/Quizzes`);
+  };
 
   return (
     <div id="wd-quiz-questions-editor" className="p-3">
@@ -248,7 +281,12 @@ export default function QuizQuestionsEditor() {
       <hr />
       <div className="d-flex gap-2 justify-content-end">
         <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
-        {isFaculty && <Button variant="danger" onClick={handleSave}>Save</Button>}
+        {isFaculty && (
+          <>
+            <Button variant="secondary" onClick={handleSave}>Save</Button>
+            <Button variant="danger" onClick={handleSaveAndPublish}>Save &amp; Publish</Button>
+          </>
+        )}
       </div>
     </div>
   );

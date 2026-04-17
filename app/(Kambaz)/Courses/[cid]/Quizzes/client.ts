@@ -24,6 +24,14 @@ export const deleteQuiz = async (quizId: string) => {
   const { data } = await axiosWithCredentials.delete(`${QUIZZES_API}/${quizId}`);
   return data;
 };
+export const publishQuiz = async (quizId: string) => {
+  const { data } = await axiosWithCredentials.post(`${QUIZZES_API}/${quizId}/publish`);
+  return data;
+};
+export const unpublishQuiz = async (quizId: string) => {
+  const { data } = await axiosWithCredentials.post(`${QUIZZES_API}/${quizId}/unpublish`);
+  return data;
+};
 
 export const findQuestionsForQuiz = async (courseId: string, quizId: string) => {
   const { data } = await axiosWithCredentials.get(`${COURSES_API}/${courseId}/quizzes/${quizId}/questions`);
@@ -39,5 +47,17 @@ export const updateQuestion = async (question: any) => {
 };
 export const deleteQuestion = async (questionId: string) => {
   const { data } = await axiosWithCredentials.delete(`${QUIZZES_API}/questions/${questionId}`);
+  return data;
+};
+
+export const findAnswersForQuiz = async (quizId: string) => {
+  const { data } = await axiosWithCredentials.get(`${QUIZZES_API}/${quizId}/answers/current`);
+  return data;
+};
+export const createAnswer = async (questionId: string, answer: any) => {
+  const { data } = await axiosWithCredentials.post(
+    `${HTTP_SERVER}/api/questions/${questionId}/answers`,
+    { answer }
+  );
   return data;
 };
