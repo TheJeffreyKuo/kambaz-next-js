@@ -1,7 +1,7 @@
 "use client";
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Button, Form, FormControl, FormSelect } from "react-bootstrap";
+import { Button, Form, FormControl, FormSelect, Nav } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../../../store";
 import { setQuestions, addQuestion, deleteQuestion, updateQuestion } from "./reducer";
@@ -349,6 +349,17 @@ export default function QuizQuestionsEditor() {
       <div className="d-flex justify-content-end mb-3">
         <span className="fw-bold">Points {totalPoints}</span>
       </div>
+
+      <Nav variant="tabs" className="mb-3" style={{ "--bs-nav-link-color": "#dc3545" } as React.CSSProperties}>
+        <Nav.Item>
+          <Nav.Link onClick={() => router.push(`/Courses/${cid}/Quizzes/${qid}/Editor`)}>
+            Details
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link active>Questions</Nav.Link>
+        </Nav.Item>
+      </Nav>
       {questions.length === 0 && (
         <p className="text-muted text-center py-4">No questions yet. Click &quot;+ New Question&quot; to add one.</p>
       )}

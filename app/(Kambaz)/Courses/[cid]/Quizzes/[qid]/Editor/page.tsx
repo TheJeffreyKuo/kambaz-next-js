@@ -141,7 +141,7 @@ export default function QuizDetailsEditor() {
         </span>
       </div>
 
-      <Nav variant="tabs" className="mb-3">
+      <Nav variant="tabs" className="mb-3" style={{ "--bs-nav-link-color": "#dc3545" } as React.CSSProperties}>
         <Nav.Item>
           <Nav.Link active>Details</Nav.Link>
         </Nav.Item>
