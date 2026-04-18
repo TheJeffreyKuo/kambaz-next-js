@@ -5,7 +5,7 @@ import { Button, Form, FormControl, FormSelect } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../../../store";
 import { setQuestions, addQuestion, deleteQuestion, updateQuestion } from "./reducer";
-import { updateQuiz as updateQuizAction } from "../../reducer";
+import { addQuiz, updateQuiz as updateQuizAction, clearDraft } from "../../reducer";
 import * as client from "../../client";
 import * as coursesClient from "../../../../client";
 import RichTextEditor from "../../RichTextEditor";
@@ -183,20 +183,27 @@ export default function QuizQuestionsEditor() {
   const router = useRouter();
   const dispatch = useDispatch();
   const { questions } = useSelector((state: RootState) => state.questionsReducer);
+  const { draft } = useSelector((state: RootState) => state.quizzesReducer);
   const { currentUser } = useSelector((state: RootState) => state.accountReducer);
   const isFaculty = currentUser?.role?.toUpperCase() === "FACULTY";
+  const isNew = qid === "new";
   const [editingId, setEditingId] = useState<string | null>(null);
 
   useEffect(() => {
+    if (isNew) {
+      // Keep existing Redux state (draft questions from this new-quiz session).
+      return;
+    }
     dispatch(setQuestions([]));
     client.findQuestionsForQuiz(cid as string, qid as string)
       .then(data => dispatch(setQuestions(data || [])))
       .catch(() => {});
-  }, [cid, qid]);
+  }, [cid, qid, isNew]);
 
   const totalPoints = questions.reduce((sum: number, q: any) => sum + (q.points || 0), 0);
 
   const syncQuizMeta = async (nextQuestions: Question[]) => {
+    if (isNew) return;
     const points = nextQuestions.reduce((s, q) => s + (q.points || 0), 0);
     const questionCount = nextQuestions.length;
     try {
@@ -208,7 +215,7 @@ export default function QuizQuestionsEditor() {
   };
 
   const handleNewQuestion = () => {
-    const q = newQuestion(qid as string);
+    const q = newQuestion(isNew ? "new" : (qid as string));
     dispatch(addQuestion(q));
     setEditingId(q._id);
   };
@@ -216,6 +223,12 @@ export default function QuizQuestionsEditor() {
   const handleSaveQuestion = async (q: Question) => {
     const wasNew = q._id.startsWith("new-");
     let savedQuestion: Question = q;
+    if (isNew) {
+      // Defer backend persistence until the quiz itself is saved.
+      dispatch(updateQuestion(q));
+      setEditingId(null);
+      return;
+    }
     if (wasNew) {
       try {
         const saved = await client.createQuestionForQuiz(cid as string, qid as string, { ...q, _id: undefined });
@@ -237,18 +250,93 @@ export default function QuizQuestionsEditor() {
   };
 
   const handleDeleteQuestion = async (questionId: string) => {
-    if (!questionId.startsWith("new-")) {
+    if (!isNew && !questionId.startsWith("new-")) {
       try { await client.deleteQuestion(questionId); } catch {}
     }
     dispatch(deleteQuestion(questionId));
     if (editingId === questionId) setEditingId(null);
-    const next = questions.filter((x: any) => x._id !== questionId);
-    await syncQuizMeta(next as Question[]);
+    if (!isNew) {
+      const next = questions.filter((x: any) => x._id !== questionId);
+      await syncQuizMeta(next as Question[]);
+    }
   };
 
-  const handleCancel = () => router.push(`/Courses/${cid}/Quizzes/${qid}`);
-  const handleSave = () => router.push(`/Courses/${cid}/Quizzes/${qid}`);
+  const defaultDraft = () => ({
+    title: "Unnamed Quiz",
+    course: cid,
+    quizType: "GRADED_QUIZ",
+    assignmentGroup: "QUIZZES",
+    shuffleAnswers: true,
+    timeLimit: 20,
+    multipleAttempts: false,
+    howManyAttempts: 1,
+    oneQuestionAtATime: true,
+    published: false,
+  });
+
+  const persistQueuedForNew = async (): Promise<{ createdId: string; allQs: any[] }> => {
+    const seed = draft ? { ...draft, course: cid } : defaultDraft();
+    const meta = { points: totalPoints, questionCount: questions.length };
+    const created = await coursesClient.createQuizForCourse(cid as string, { ...seed, ...meta });
+    const queued = (questions as any[]).filter((q: any) => String(q._id).startsWith("new-"));
+    const saved: any[] = [];
+    for (const q of queued) {
+      try {
+        const { _id: _discard, ...rest } = q;
+        const c = await client.createQuestionForQuiz(cid as string, created._id, { ...rest, quiz: created._id });
+        saved.push(c);
+      } catch {}
+    }
+    const remaining = (questions as any[]).filter((q: any) => !String(q._id).startsWith("new-"));
+    return { createdId: created._id, allQs: [...remaining, ...saved] };
+  };
+
+  const handleCancel = () => {
+    if (isNew) {
+      dispatch(clearDraft());
+      dispatch(setQuestions([]));
+      router.push(`/Courses/${cid}/Quizzes`);
+    } else {
+      router.push(`/Courses/${cid}/Quizzes/${qid}`);
+    }
+  };
+
+  const handleSave = async () => {
+    if (isNew) {
+      try {
+        const { createdId, allQs } = await persistQueuedForNew();
+        const seed = draft ? { ...draft, course: cid } : defaultDraft();
+        const finalMeta = { points: allQs.reduce((s: number, q: any) => s + (q.points || 0), 0), questionCount: allQs.length };
+        const finalQuiz = { ...seed, _id: createdId, ...finalMeta };
+        try { await client.updateQuiz(finalQuiz); } catch {}
+        dispatch(addQuiz(finalQuiz));
+        dispatch(setQuestions(allQs));
+        dispatch(clearDraft());
+        router.push(`/Courses/${cid}/Quizzes/${createdId}`);
+      } catch {
+        router.push(`/Courses/${cid}/Quizzes`);
+      }
+      return;
+    }
+    router.push(`/Courses/${cid}/Quizzes/${qid}`);
+  };
+
   const handleSaveAndPublish = async () => {
+    if (isNew) {
+      try {
+        const { createdId, allQs } = await persistQueuedForNew();
+        const seed = draft ? { ...draft, course: cid } : defaultDraft();
+        const finalMeta = { points: allQs.reduce((s: number, q: any) => s + (q.points || 0), 0), questionCount: allQs.length };
+        const finalQuiz = { ...seed, _id: createdId, ...finalMeta, published: true };
+        try { await client.updateQuiz(finalQuiz); } catch {}
+        try { await coursesClient.publishQuiz(createdId); } catch {}
+        dispatch(addQuiz(finalQuiz));
+        dispatch(setQuestions(allQs));
+        dispatch(clearDraft());
+      } catch {}
+      router.push(`/Courses/${cid}/Quizzes`);
+      return;
+    }
     try {
       await coursesClient.publishQuiz(qid as string);
       dispatch(updateQuizAction({ _id: qid, published: true }));
