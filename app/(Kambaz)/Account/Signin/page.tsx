@@ -18,16 +18,64 @@ export default function Signin() {
   return (
     <div id="wd-signin-screen">
       <h3>Sign in</h3>
-      <FormControl id="wd-username"
+      <FormControl
+        id="wd-username"
         value={credentials.username}
-        onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-        placeholder="username" className="mb-2" />
-      <FormControl id="wd-password"
+        onChange={(e) =>
+          setCredentials({ ...credentials, username: e.target.value })
+        }
+        placeholder="username"
+        className="mb-2"
+      />
+      <FormControl
+        id="wd-password"
         value={credentials.password}
-        onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-        placeholder="password" type="password" className="mb-2" />
-      <Button onClick={signin} id="wd-signin-btn" className="w-100 mb-2"> Sign in </Button>
-      <Link href="/Account/Signup" className="wd-signin-link">Sign up</Link>
+        onChange={(e) =>
+          setCredentials({ ...credentials, password: e.target.value })
+        }
+        placeholder="password"
+        type="password"
+        className="mb-2"
+      />
+      <Button onClick={signin} id="wd-signin-btn" className="w-100 mb-2">
+        {" "}
+        Sign in{" "}
+      </Button>
+      <Link href="/Account/Signup" className="wd-signin-link">
+        Sign up
+      </Link>
+      <br />
+      <br />
+      <br />
+      <br />
+      <b>Team Members</b>
+      <br />
+      Alexander Kylander-Kreiner
+      <br />
+      Chia Hao Kuo
+      <br />
+      Jonathan Jiao
+      <br />
+      <br />
+      <b>Repositories</b>
+      <br />
+      Front end:{" "}
+      <Link
+        href="https://github.com/TheJeffreyKuo/kambaz-next-js"
+        id="wd-frontend-repo"
+        target="_blank"
+      >
+        github.com/TheJeffreyKuo/kambaz-next-js
+      </Link>
+      <br />
+      Server:{" "}
+      <Link
+        href="https://github.com/TheJeffreyKuo/kambaz-node-server-app"
+        id="wd-server-repo"
+        target="_blank"
+      >
+        github.com/TheJeffreyKuo/kambaz-node-server-app
+      </Link>
     </div>
   );
 }
